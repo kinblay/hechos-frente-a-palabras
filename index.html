@@ -381,8 +381,8 @@ footer.foot button{background:none;border:0;padding:0;color:var(--brand);cursor:
   <section class="view" id="v-legal" hidden></section>
   <section class="view" id="v-editor" hidden></section>
 
-  <footer class="foot"><span>Proyecto independiente. No es un sitio oficial. Sin publicidad, sin registro, sin cookies. No acepta donaciones de partidos.</span>
-    <button type="button" data-go="metodo">Metodología</button><button type="button" data-go="legal">Aviso legal · Privacidad · Cookies</button></footer>
+  <footer class="foot"><span>Proyecto independiente. No es un sitio oficial. Sin publicidad, sin registro, sin cookies y sin financiación de partidos.</span>
+    <button type="button" data-go="metodo">Metodología</button><button type="button" data-go="legal">Aviso legal · Privacidad · Contacto</button></footer>
 </div>
 
 <script>
@@ -488,7 +488,7 @@ const CANALES = {
   entrevista:["Entrevista (radio, televisión o prensa)"], redes:["Redes sociales oficiales del partido o del dirigente"], pleno:["Intervención en el Congreso o el Senado"],
   votacion:["Votación parlamentaria"], boe:["Norma publicada en el BOE"], presupuesto:["Presupuesto o ejecución presupuestaria"], acuerdo:["Acuerdo o pacto firmado"]
 };
-const TABS = {test:"Test", partidos:"Partidos", votaciones:"Votaciones", promesas:"Promesas", compromisos:"Compromisos 29-N", noche:"Noche electoral", pregunta:"Pregunta", votar:"Cómo votar", barometro:"Barómetro", donar:"Donar", metodo:"Método", legal:"Legal", editor:"Editor"};
+const TABS = {test:"Test", partidos:"Partidos", votaciones:"Votaciones", promesas:"Promesas", compromisos:"Compromisos 29-N", noche:"Noche electoral", pregunta:"Pregunta", votar:"Cómo votar", barometro:"Barómetro", metodo:"Método", legal:"Legal y contacto", editor:"Editor"};
 const MOB = ["test","partidos","promesas","noche"];
 /* Colores de partido: solo dentro de gráficos (hemiciclo, chips de voto) */
 const PCOLOR = {pp:"#1f6fc4", psoe:"#d7192a", vox:"#5ba532", sumar:"#d6336c", erc:"#f2a531", junts:"#16a5a0", bildu:"#9bbf1e", pnv:"#2f7d3f", bng:"#7fb8de", cc:"#e8c21b", upn:"#3c5aa8", podemos:"#6c2f73"};
@@ -1434,33 +1434,50 @@ const PH = s => `<span class="ph">[${s}]</span>`;
 function renderLegal(){
   const el=$("#v-legal");
   el.innerHTML=`<div class="prose">
-    <div class="notice">Borrador para revisión. Los campos entre corchetes los completa el titular antes de publicar.</div>
-    <h2>Aviso legal</h2>
-    <p><b>Titular.</b> En cumplimiento del artículo 10 de la Ley 34/2002 (LSSI), esta web es titularidad de ${PH("Nombre o asociación")}, NIF ${PH("NIF")}, domicilio ${PH("Domicilio")}, correo ${PH("correo@dominio")}.</p>
-    <p><b>Objeto.</b> Herramienta de divulgación que compara la opinión del usuario con la de los partidos y muestra qué han dicho y qué han hecho, con cita y fuente en cada dato. No está vinculada a ningún partido, candidatura, medio ni administración, ni recibe financiación de ellos.</p>
-    <p><b>Correcciones.</b> Cualquier persona puede pedir la corrección de un dato en ${PH("correo@dominio")} aportando la fuente. Las correcciones aceptadas se aplican indicando la fecha.</p>
-    <p><b>Propiedad intelectual.</b> Las citas de programas, declaraciones y documentos oficiales se reproducen de forma literal y parcial, con su fuente, con fines de análisis e información (derecho de cita, artículo 32 de la Ley de Propiedad Intelectual). Los nombres y siglas de los partidos pertenecen a sus titulares.</p>
-    <p><b>Test y búsqueda.</b> El resultado del test es orientativo, se calcula con reglas publicadas y sin inteligencia artificial, y no es una recomendación de voto. La sección Pregunta busca por palabras entre las citas documentadas; no genera opiniones ni recomienda voto.</p>
-    <p><b>Enlaces externos.</b> Se ofrecen para comprobar los datos; el titular no responde de su contenido. <b>Legislación aplicable:</b> española.</p>
-    <h2>Política de privacidad</h2>
+    <h2>Qué es este proyecto</h2>
+    <p>«Hechos frente a palabras» es un proyecto personal de divulgación, independiente y sin ánimo de lucro, sobre las elecciones generales del 29 de noviembre de 2026. No está vinculado a ningún partido, candidatura, medio de comunicación ni administración, ni recibe financiación de ellos. No tiene actividad económica: no hay publicidad, ventas, suscripciones ni donaciones.</p>
+    <p>El resultado del test es orientativo y se calcula con las reglas publicadas en ${'<button type="button" class="linkbtn" data-go2="metodo">Método</button>'}, sin inteligencia artificial. No es una recomendación de voto ni una encuesta.</p>
+    <h2>Contenidos y neutralidad</h2>
+    <p>El criterio es el mismo para todos los partidos: solo palabras literales de quien representa al partido y hechos comprobables (votaciones, leyes, presupuestos), cada uno con su fuente enlazada. Puede haber errores. Si encuentras uno, envíalo con el formulario de esta página junto con la fuente; las correcciones aceptadas se aplican indicando la fecha.</p>
+    <p><b>Propiedad intelectual.</b> Las citas de programas, declaraciones y documentos oficiales se reproducen de forma literal y parcial, con su fuente, con fines de análisis e información (derecho de cita, artículo 32 de la Ley de Propiedad Intelectual). Los nombres y siglas de los partidos pertenecen a sus titulares; esta web no usa sus logotipos.</p>
+    <p><b>Enlaces externos.</b> Se ofrecen para comprobar los datos; esta web no responde de su contenido. <b>Legislación aplicable:</b> española.</p>
+    <h2>Privacidad</h2>
     <p><b>En resumen.</b> No recogemos tus respuestas al test. Funcionan solo en tu navegador, no se envían a ningún servidor y nunca se ceden ni se venden. No hay registro de usuarios, publicidad, analítica ni perfiles.</p>
-    <p><b>Responsable.</b> ${PH("Nombre o asociación")}, NIF ${PH("NIF")}, ${PH("correo@dominio")}.</p>
-    <p><b>Respuestas al test.</b> Se guardan en el almacenamiento local de tu navegador para que no pierdas el progreso. Nunca salen de tu dispositivo y el titular no puede verlas. Tu opinión política es un dato especialmente protegido (artículo 9 del RGPD) y la web está diseñada para no recogerla.</p>
-    <p><b>Barómetro anónimo (opcional).</b> Solo si pulsas «Enviar de forma anónima», se guardan dos respuestas (si tenías decidido tu voto antes del test y si lo cambiarías después) y el día. Si además marcas la casilla correspondiente, se añaden el partido con más afinidad en tu test y tu comunidad autónoma. Nunca se guardan tus respuestas a las tesis ni ningún identificador junto a esas respuestas. Se publican solo de forma agregada, a partir de 30 respuestas, y no se publican del 24 al 29 de noviembre. Si entraste con el enlace de un grupo, tu envío cuenta también para ese grupo, que solo ve totales a partir de 5 respuestas. Estos datos se guardan en un servidor de Supabase en la Unión Europea (Irlanda).</p>
+    <p><b>Respuestas al test.</b> Se guardan en el almacenamiento local de tu navegador para que no pierdas el progreso. Nunca salen de tu dispositivo y nadie más puede verlas. Tu opinión política es un dato especialmente protegido (artículo 9 del RGPD) y la web está diseñada para no recogerla.</p>
+    <p><b>Barómetro anónimo (opcional).</b> Solo si pulsas «Enviar de forma anónima», se guardan dos respuestas (si tenías decidido tu voto antes del test y si lo cambiarías después) y el día. Si además marcas la casilla correspondiente, se añaden el partido con más afinidad en tu test y tu comunidad autónoma. Nunca se guardan tus respuestas a las tesis, ni la hora de envío, ni ningún identificador junto a esas respuestas. Si entraste con el enlace de un grupo, tu envío cuenta también para ese grupo, que solo ve totales a partir de 5 respuestas. Estos datos se guardan en un servidor de Supabase en la Unión Europea (Irlanda).</p>
     <p><b>Control de un envío por dispositivo.</b> Para impedir envíos repetidos, tu navegador guarda un identificador aleatorio y el servidor guarda, por separado y sin ninguna de tus respuestas, una huella cifrada e irreversible de ese identificador y de tu dirección IP (nunca la IP). Base jurídica: interés legítimo en evitar fraudes en la estadística (artículo 6.1.f del RGPD). Se borra al terminar las elecciones.</p>
     <p><b>Sección Pregunta.</b> La búsqueda se hace en tu navegador. Lo que escribes no se envía a ningún servidor ni se guarda.</p>
-    <p><b>Datos técnicos.</b> Para mostrarte la página, el proveedor de alojamiento (GitHub Pages, de GitHub Inc.) procesa tu dirección IP y datos técnicos de la conexión. Base jurídica: interés legítimo en prestar el servicio y mantener su seguridad (artículo 6.1.f del RGPD). Esta web carga tipografías desde Google Fonts, que recibe tu dirección IP; ${PH("antes del lanzamiento: alojar las tipografías en el propio servidor y quitar esta frase")}.</p>
-    <p><b>Donaciones.</b> Los pagos los gestiona ${PH("plataforma de pago")}, que trata tus datos de pago con su propia política. Nosotros solo recibimos el importe y, si la plataforma lo facilita, tu nombre y correo para el recibo.</p>
-    <p><b>Si nos escribes.</b> Usamos tu correo y tu mensaje solo para responderte y los borramos cuando el asunto queda resuelto.</p>
-    <p><b>Venta y cesión.</b> No vendemos, alquilamos ni cedemos datos personales a nadie.</p>
-    <p><b>Tus derechos.</b> Acceso, rectificación, supresión, oposición, limitación y portabilidad en ${PH("correo@dominio")}. Puedes reclamar ante la ${link("https://www.aepd.es","Agencia Española de Protección de Datos")}. Última actualización: ${PH("fecha")}.</p>
+    <p><b>Formulario de contacto.</b> Se guarda tu mensaje y, solo si lo indicas, un correo para responderte. Se usan únicamente para atender tu mensaje y se borran cuando el asunto queda resuelto.</p>
+    <p><b>Datos técnicos.</b> Para mostrarte la página, el proveedor de alojamiento (GitHub Pages, de GitHub Inc.) procesa tu dirección IP y datos técnicos de la conexión. Esta web carga tipografías desde Google Fonts, que también recibe tu dirección IP.</p>
+    <p><b>Venta y cesión.</b> No se venden, alquilan ni ceden datos personales a nadie.</p>
+    <h2>Encuestas y veda electoral</h2>
+    <p>Esta web no publica encuestas ni estimaciones de voto. El barómetro general no se muestra del 24 al 29 de noviembre y el servidor no entrega esos datos en esas fechas (art. 69.7 de la ${link(LOREG,"LOREG")}). Los grupos privados solo ven sus propios totales, que no son una encuesta ni miden intención de voto.</p>
+    <h2>Contacto, correcciones y derechos</h2>
+    <p>El responsable del tratamiento es el autor del proyecto. Usa este formulario para pedir una corrección, hacer una consulta o ejercer tus derechos de acceso, rectificación, supresión, oposición o limitación. Las respuestas del barómetro no llevan identificador, así que no es posible localizar las de una persona concreta (artículo 11 del RGPD); las huellas de control se borran tras las elecciones. También puedes reclamar ante la ${link("https://www.aepd.es","Agencia Española de Protección de Datos")}.</p>
+    <form class="card" id="fContacto" style="max-width:560px">
+      <label for="ct-texto">Mensaje<textarea id="ct-texto" required minlength="10" maxlength="2000" placeholder="Si es una corrección, incluye el enlace a la fuente."></textarea></label>
+      <label for="ct-mail">Correo para responderte (opcional)<input id="ct-mail" type="email" maxlength="200" autocomplete="email"></label>
+      <label class="hp" aria-hidden="true">No rellenar<input id="ct-hp" tabindex="-1" autocomplete="off"></label>
+      <div class="row"><button class="btn primary" type="submit">Enviar mensaje</button><span class="msg" id="ct-msg" role="status"></span></div>
+    </form>
     <h2>Cookies</h2>
-    <p>Esta web <b>no usa cookies</b>. Solo guarda en tu navegador tu progreso en el test (clave <code>ce29n-test-v1</code>) y, si envías la estadística o entras en un grupo, un identificador aleatorio de este dispositivo y el código del grupo. Es imprescindible para el servicio que pides y no sirve para seguimiento, así que está exenta de consentimiento (artículo 22.2 de la LSSI) y no necesitas aceptar ningún banner.</p>
+    <p>Esta web <b>no usa cookies</b>. Solo guarda en tu navegador tu progreso en el test (clave <code>ce29n-test-v1</code>) y, si envías la estadística o entras en un grupo, un identificador aleatorio de este dispositivo y el código del grupo. Es imprescindible para el servicio que pides y no sirve para seguimiento, así que está exento de consentimiento (artículo 22.2 de la LSSI) y no necesitas aceptar ningún banner.</p>
     <div class="row"><button class="btn" type="button" id="wipe">Borrar mis respuestas de este navegador</button><span class="msg" id="wipe-msg" role="status"></span></div>
     <h2>Inteligencia artificial</h2>
     <p>La recopilación de citas se hace con ayuda de herramientas de IA; cada cita se comprueba contra su fuente antes de publicarse. El test y la sección Pregunta no usan IA.</p>
+    <p class="muted small">Última actualización: 26/11/2026.</p>
   </div>`;
   el.querySelector("#wipe").addEventListener("click",()=>{ try{localStorage.removeItem(LS_KEY);}catch(e){} S.answers={};S.idx=0;S.stage="pre";S.pre=null;S.post=null;S.sent=false; el.querySelector("#wipe-msg").textContent="Respuestas borradas."; });
+  el.querySelector("#fContacto").addEventListener("submit",async e=>{ e.preventDefault();
+    const m=el.querySelector("#ct-msg"), t=el.querySelector("#ct-texto").value.trim(), c=el.querySelector("#ct-mail").value.trim();
+    if(el.querySelector("#ct-hp").value) return;
+    if(t.length<10){ m.textContent="Escribe al menos 10 caracteres."; return; }
+    m.textContent="Enviando…";
+    try{ const r=await rpc("contactar",{p_texto:t,p_contacto:c||null});
+      if(r==="ok"){ e.target.reset(); m.textContent="Mensaje enviado. Gracias."; }
+      else if(r==="limite") m.textContent="Hoy ya se han enviado 3 mensajes desde esta conexión. Prueba mañana.";
+      else m.textContent="No se ha podido enviar. Revisa el texto."; }
+    catch(err){ m.textContent="No se ha podido enviar. Comprueba la conexión."; } });
 }
 
 /* ================= Editor ================= */
